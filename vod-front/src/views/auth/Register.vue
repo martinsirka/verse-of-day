@@ -2,23 +2,39 @@
     <div class="auth_wrapper">
         <div class="auth_title">Register</div>
         <div class="auth_group">
-            <input type="text" placeholder="Name" class="auth_input" name="name" @focus="onFocus('name')" @blur="onBlur('name')">
+            <input v-model="form.name" type="text" placeholder="Name" class="auth_input" name="name" @focus="onFocus('name')" @blur="onBlur('name')">
         </div>
         <div class="auth_group">
-            <input type="email" placeholder="email" class="auth_input" name="email" @focus="onFocus('email')" @blur="onBlur('email')">
+            <input v-model="form.email" type="email" placeholder="email" class="auth_input" name="email" @focus="onFocus('email')" @blur="onBlur('email')">
         </div>
         <div class="auth_group">
-            <input type="password" placeholder="password" class="auth_input" name="password" @focus="onFocus('password')" @blur="onBlur('password')">
+            <input v-model="form.password" type="password" placeholder="password" class="auth_input" name="password" @focus="onFocus('password')" @blur="onBlur('password')">
         </div>
         <div class="auth_group">
-            <input type="repeat_password" placeholder="Repeat password" class="auth_input" name="repeat_password" @focus="onFocus('repeat_password')" @blur="onBlur('repeat_password')">
+            <input v-model="form.repeat_password" type="password" placeholder="Repeat password" class="auth_input" name="repeat_password" @focus="onFocus('repeat_password')" @blur="onBlur('repeat_password')">
+        </div>
+        <div class="auth_group pos-flex-end">
+            <button class="btn-theme" @click="register">Register</button>
         </div>
     </div>
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
     name: "Register",
+
+    data() {
+        return {
+            form: {
+                name: null,
+                email: null,
+                password: null,
+                repeat_password: null,
+            }
+        }
+    },
 
     methods: {
         onFocus(name) {
@@ -39,6 +55,19 @@ export default {
                     item.classList.remove('light_border')
                 }
             })
+        },
+
+        register() {
+            axios.post('/api/auth/register', this.form)
+                .then(() => {
+                    this.form.name = null,
+                    this.form.email = null,
+                    this.form.password = null,
+                    this.form.repeat_password = null
+                })
+                .catch(error => {
+                    console.log(error)
+                })
         }
     },
 };
