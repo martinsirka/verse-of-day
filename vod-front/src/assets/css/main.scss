@@ -22,7 +22,7 @@ body {
     padding: 2em;
     border-bottom: 2px solid $base-color-light;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
 
   a {
     font-weight: 500;
@@ -44,6 +44,20 @@ body {
 .nav-active {
     position: fixed;
     transition: all 3s ease;
+}
+
+.nav-user-logged {
+    display: flex;
+    align-items: center;
+}
+
+.icon-logout {
+    fill: $green;
+    display: flex;
+
+    &:hover {
+        fill: $green-light; 
+    }
 }
 
 // Main content

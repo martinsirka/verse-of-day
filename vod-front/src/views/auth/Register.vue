@@ -60,13 +60,11 @@ export default {
         register() {
             axios.post('/api/auth/register', this.form)
                 .then(() => {
-                    this.form.name = null,
-                    this.form.email = null,
-                    this.form.password = null,
-                    this.form.repeat_password = null
+                    this.$router.push({name: 'Login'})
                 })
                 .catch(error => {
-                    console.log(error)
+                    alert('Registration faild, pleas try again.')
+                    console.log('Faild to register', error)
                 })
         }
     },

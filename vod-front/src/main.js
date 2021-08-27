@@ -8,6 +8,11 @@ import './assets/js/index.js';
 
 axios.defaults.baseURL = 'http://verse-of-day';
 
+axios.interceptors.request.use(request => {
+  axios.defaults.headers.common['Authorization'] = 'Bearer ' + store.state.auth.accessToken;
+  return request;
+});
+
 Vue.config.productionTip = false;
 
 new Vue({
