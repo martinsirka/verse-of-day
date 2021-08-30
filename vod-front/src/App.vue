@@ -9,17 +9,18 @@
 </template>
 
 <script>
+import "./assets/js/index";
 import Navigation from "./components/Navigation.vue";
-import Footer from './components/Footer.vue'
+import Footer from "./components/Footer.vue";
 
 export default {
   components: {
     Navigation,
-    Footer
+    Footer,
   },
-}
+};
 </script>
 
 <style lang="scss">
-
+@import "./assets/css/main.scss";
 </style>

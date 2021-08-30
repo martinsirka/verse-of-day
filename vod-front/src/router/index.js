@@ -1,7 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
-import GuestGuard from './guards/GuestGuard'
+import GuestGuard from "./guards/GuestGuard";
 // import AuthGuard from './guards/AuthGuard'
 
 Vue.use(VueRouter);
@@ -26,15 +26,13 @@ const routes = [
     path: "/register",
     name: "Register",
     beforeEnter: GuestGuard,
-    component: () =>
-      import("../views/auth/Register.vue"),
+    component: () => import("../views/auth/Register.vue"),
   },
   {
     path: "/login",
     name: "Login",
     beforeEnter: GuestGuard,
-    component: () =>
-      import("../views/auth/Login.vue"),
+    component: () => import("../views/auth/Login.vue"),
   },
 ];
 

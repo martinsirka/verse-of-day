@@ -2,14 +2,16 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
-import axios from 'axios';
-import './assets/css/main.scss';
-import './assets/js/index.js';
+import axios from "axios";
+import Vuelidate from "vuelidate";
 
-axios.defaults.baseURL = 'http://verse-of-day';
+Vue.use(Vuelidate);
 
-axios.interceptors.request.use(request => {
-  axios.defaults.headers.common['Authorization'] = 'Bearer ' + store.state.auth.accessToken;
+axios.defaults.baseURL = "http://verse-of-day";
+
+axios.interceptors.request.use((request) => {
+  axios.defaults.headers.common["Authorization"] =
+    "Bearer " + store.state.auth.accessToken;
   return request;
 });
 

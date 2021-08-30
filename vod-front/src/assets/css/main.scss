@@ -215,6 +215,12 @@ body {
     transition: .3s;
 }
 
+.auth-text {
+    text-align: center;
+    margin: 1em 0;
+    font-size: .9em;
+}
+
 input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
     color: $green;
 }
@@ -230,4 +236,13 @@ input:-moz-placeholder { /* Firefox 18- */
 
 .light_border {
     border: 2px solid $green-light;
+}
+
+a.link-auth {
+    text-decoration: none;
+    color: $green;
+
+    &:hover {
+        color: $green-light;
+    }
 }
