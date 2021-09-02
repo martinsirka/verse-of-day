@@ -20,6 +20,7 @@ class User extends Authenticatable implements JWTSubject
     protected $fillable = [
         'name',
         'email',
+        'role',
         'password',
     ];
 
@@ -61,4 +62,14 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+
+    /**
+     * Return a admin role id.
+     *
+     * @return boolean
+     */
+    public function isAdmin()
+    {
+        return $this->role == 1;
+    } 
 }

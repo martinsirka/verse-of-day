@@ -27,8 +27,6 @@ class AuthController extends Controller
      */
     public function login(Request $request)
     {
-        // $credentials = request(['email', 'password']);
-
         $credentials = $request->validate([
             'email' => 'required|email',
             'password' => 'required'
@@ -51,6 +49,7 @@ class AuthController extends Controller
         User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'role'=>2,
             'password' => bcrypt($request->password)
         ]);
 
