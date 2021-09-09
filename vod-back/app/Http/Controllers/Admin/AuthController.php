@@ -32,7 +32,5 @@ class AuthController extends Controller
         Auth::guard('web')->logout();
 
         return redirect()->route('admin.login');
-
-        // return response()->json(['Logout' => 'test']);
     }
 }
