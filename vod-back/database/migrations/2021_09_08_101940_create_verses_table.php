@@ -15,6 +15,7 @@ class CreateVersesTable extends Migration
     {
         Schema::create('verses', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id');
             $table->string('reference');
             $table->longText('content');
             $table->longText('comment');

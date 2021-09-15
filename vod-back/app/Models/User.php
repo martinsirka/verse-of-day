@@ -71,5 +71,10 @@ class User extends Authenticatable implements JWTSubject
     public function isAdmin()
     {
         return $this->role == 1;
-    } 
+    }
+
+    public function verses()
+    {
+        return  $this->hasMany(Verse::class);
+    }
 }

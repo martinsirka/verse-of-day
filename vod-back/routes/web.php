@@ -28,5 +28,6 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('logout', [AuthController::class, 'logout'])->name('admin.logout');
         Route::get('verse', [VerseController::class, 'index'])->name('verse.index');
         Route::post('verse', [VerseController::class, 'store'])->name('verse.store');
+        Route::get('verse/{user}', [VerseController::class, 'show'])->name('verse.show');
     });
 });

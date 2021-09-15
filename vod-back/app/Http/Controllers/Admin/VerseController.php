@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\VerseRequest;
 use App\Models\Verse;
+use App\Models\User;
 
 class VerseController extends Controller
 {
@@ -38,9 +39,10 @@ class VerseController extends Controller
     public function store(VerseRequest $request)
     {
         Verse::create([
+            'user_id'   => auth()->id(),
             'reference' => $request->input('reference'),
-            'content' => $request->input('content'),
-            'comment' => $request->input('comment')
+            'content'   => $request->input('content'),
+            'comment'   => $request->input('comment')
         ]);
 
         return redirect()->back()->with('message', 'Verse of day has been successfully posted.');
@@ -52,9 +54,12 @@ class VerseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Verse $verses, $id)
     {
-        //
+        $user = User::find($id);
+        $verses = $user->verses()->latest()->get();
+
+        return view('verse.show', compact('verses'));
     }
 
     /**

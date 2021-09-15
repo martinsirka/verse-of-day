@@ -15,8 +15,14 @@ class Verse extends Model
      * @var array
      */
     protected $fillable = [
+        'user_id',
         'reference',
         'content',
         'comment'
     ];
+
+    public function user()
+    {
+        return  $this->belongsTo(User::class);
+    }
 }

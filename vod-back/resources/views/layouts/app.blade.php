@@ -26,7 +26,7 @@
 <body id="page-top">
 
     <!-- Page Wrapper -->
-    <div id="wrapper">
+    <div id="wrapper" class="position-relative">
 
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
@@ -54,6 +54,13 @@
                 <a class="nav-link" href="{{ route('verse.index') }}">
                     <i class="fas fa-folder-plus"></i>
                     <span>Add Verse</span></a>
+            </li>
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('verse.show', Auth::user()->id ) }}">
+                    <i class="fas fa-table"></i>
+                    <span>Show all Verses</span></a>
             </li>
 
             <!-- Divider -->

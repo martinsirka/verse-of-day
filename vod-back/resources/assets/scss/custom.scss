@@ -10,3 +10,36 @@ ul {
         list-style: none;
     }
 }
+
+table {
+  width: 80%;
+}
+
+th,td,tr {
+  max-width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+tr:first-of-type,
+td:first-of-type,
+tr:first-of-type {
+  width: 150px;
+}
+
+.verse_modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: rgba(0, 0, 0, 0.158);
+    z-index: 999;
+
+    .verse_modal-container{
+        background: #fff;
+        width: 50%;
+    }
+}
+
+
