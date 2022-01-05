@@ -51,14 +51,14 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('verse.index') }}">
+                <a class="nav-link" href="{{ route('verse.create') }}">
                     <i class="fas fa-folder-plus"></i>
                     <span>Add Verse</span></a>
             </li>
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('verse.show', Auth::user()->id ) }}">
+                <a class="nav-link" href="{{ route('verse.index') }}">
                     <i class="fas fa-table"></i>
                     <span>Show all Verses</span></a>
             </li>

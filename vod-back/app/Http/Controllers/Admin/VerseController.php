@@ -17,7 +17,11 @@ class VerseController extends Controller
      */
     public function index()
     {
-        return view('verse.create');
+        /** @var \App\Models\User $user */
+        $user = auth()->user();
+        $verses = $user->verses()->latest()->paginate(10);
+
+        return view('verse.index', compact('verses'));
     }
 
     /**
@@ -27,7 +31,7 @@ class VerseController extends Controller
      */
     public function create()
     {
-        //
+        return view('verse.create');
     }
 
     /**
@@ -51,15 +55,12 @@ class VerseController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  Verse $verses
      * @return \Illuminate\Http\Response
      */
-    public function show(Verse $verses, $id)
+    public function show(Verse $verses)
     {
-        $user = User::find($id);
-        $verses = $user->verses()->latest()->get();
-
-        return view('verse.show', compact('verses'));
+        
     }
 
     /**
@@ -68,9 +69,9 @@ class VerseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Verse $verse)
     {
-        //
+        return view('verse.edit', compact(['verse']));
     }
 
     /**
@@ -80,9 +81,11 @@ class VerseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(VerseRequest $request, Verse $verse)
     {
-        //
+        $verse->update($request->only('reference', 'content', 'comment'));
+
+        return redirect()->route('verse.index')->with('message', 'Verse was successfully edited.');
     }
 
     /**
@@ -91,8 +94,10 @@ class VerseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Verse $verse)
     {
-        //
+        $verse->delete();
+
+        return redirect()->back()->with('message', 'Verse was deleted');
     }
 }
