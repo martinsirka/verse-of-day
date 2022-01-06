@@ -21,7 +21,7 @@
             <div class="table-responsive">
 
                 <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                    <div class="row">
+                    
                         <div class="col-sm-12 col-md-6">
                             <div class="dataTables_length" id="dataTable_length">
                                 <label> 
@@ -44,9 +44,9 @@
                                 </label>
                             </div>
                         </div>
-                    </div>
                     <div class="row">
                         <div class="col-sm-12">
+                            @if (count($verses) > 0)
                             <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info">
                                 <thead>
                                     <tr role="row">
@@ -56,15 +56,8 @@
                                         <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending">Actions</th>
                                     </tr>
                                 </thead>
-                                <tfoot>
-                                    <tr>
-                                        <th rowspan="1" colspan="1">Reference</th>
-                                        <th rowspan="1" colspan="1">Verse</th>
-                                        <th rowspan="1" colspan="1">Comment</th>
-                                        <th rowspan="1" colspan="1">Actions</th>
-                                    </tr>
-                                </tfoot>
                                 <tbody>
+                                    
                                     @foreach($verses as $verse)
                                     <tr class="odd">
                                         <td class="sorting_1">{{ $verse->reference }}</td>
@@ -82,6 +75,16 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            @else
+                            <div class="d-flex justify-content-center">
+                                <a href="{{ route('verse.create') }}" class="btn btn-success btn-icon-split">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-check"></i>
+                                    </span>
+                                    <span class="text">Add First Verse</span>
+                                </a>
+                            </div>
+                            @endif
                         </div>
                     </div>
                     <div class="d-flex justify-content-center mb-5">

@@ -37,13 +37,7 @@ body {
 }
 
 .nav-inactive {
-    position: relative;
-	transition: all 3s ease;
-}
-
-.nav-active {
     position: fixed;
-    transition: all 3s ease;
 }
 
 .nav-user-logged {

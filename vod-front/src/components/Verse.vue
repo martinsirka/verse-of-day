@@ -1,26 +1,17 @@
 <template>
   <div class="verse">
-    <div class="verse-box">
+    <div class="verse-box" v-for="verse in verses" :key="`verse-${verse.id}`">
       <div class="verse-box__verse">
-        <div class="title">Plač Jeremiášov 3:31-32</div>
-        <div class="content">
-          Lebo Pán neodvrhne na veky. Lebo hoci aj zarmúti, zase sa zľutuje
-          podľa množstva svojej milosti.
-        </div>
+        <div class="title">{{ verse.reference }}</div>
+        <div class="content">{{ verse.content }}</div>
       </div>
-      <div class="verse-box__desc">
-        Ježišova láska ku nám je neopísateľná. Jeremiáš píše, že je dobre, keď
-        nosíme bremeno, teda keď sa dočasu trápime s niečím. Boh nezavrhne, ale
-        vždy pomôže a vytrhne. Dôvod, prečo sa v nebi budeme radovať omnoho viac
-        ako anjeli, je ten, že sme na zemi prešli rozličnými ťažkosťami. Tá
-        radosť bude nekonečná, lebo sme prežili biedu. Potrebné je vytrvať. Boh
-        je verný, zmiluje sa vo svojej láske a pomôže v pravej chvíli.
-      </div>
+      <div class="verse-box__desc" v-html="verse.comment"></div>
       <div class="rating">
         <RatingSharing />
       </div>
     </div>
-    <div class="verse-box">
+
+    <!-- <div class="verse-box">
       <div class="verse-box__verse">
         <div class="title">Žalm 19:2</div>
         <div class="content">
@@ -45,6 +36,7 @@
         <RatingSharing />
       </div>
     </div>
+
     <div class="verse-box">
       <div class="verse-box__verse">
         <div class="title">Príslovia 17:1</div>
@@ -63,7 +55,7 @@
       <div class="rating">
         <RatingSharing />
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -72,6 +64,12 @@ import RatingSharing from "./RatingSharing.vue";
 
 export default {
   name: "verse",
+
+  props: ['verses'],
+
+  mounted() {
+    console.log('Verse component', this.verses);
+  },
 
   components: {
     RatingSharing,
