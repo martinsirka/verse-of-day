@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\VerseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,7 @@ Route::group(['middleware' => 'api', 'prefix' => 'auth'], function () {
     Route::get('me', [AuthController::class, 'me']);
 });
 
-Route::group(['middleware' => ['api', 'auth:api']], function () {
-    Route::get('verses', [VerseController::class, 'index']);
-});
+// Route::group(['middleware' => ['api', 'auth:api']], function () {
+    // For authenticated users
+// });
+Route::get('verses', [VerseController::class, 'index']);

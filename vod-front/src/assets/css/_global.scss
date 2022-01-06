@@ -10,9 +10,9 @@ ul {
 }
 
 .container {
-    max-width: 70em;
+    max-width: 60%;
     margin: 0 auto;
-    padding: 1em;
+    padding-top: 5.4em;
     min-height: 100vh;
 }
 
@@ -22,7 +22,7 @@ ul {
     outline: none;
     border: 2px solid $green-light;
     padding: 0.8em 1.2em;
-    font-size: 1em;
+    font-size: 1rem;
     border-radius: 0.5em;
     cursor: pointer;
 
@@ -45,5 +45,5 @@ ul {
 
 .error-text {
     color: $error;
-    font-size: 0.8em;
+    font-size: 0.8rem;
 }

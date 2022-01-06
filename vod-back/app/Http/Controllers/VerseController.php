@@ -14,9 +14,8 @@ class VerseController extends Controller
      */
     public function index()
     {
-        return response()->json(
-            Verse::withCount(['favoritedByUsers'])->get()
-        );
+        $verses = Verse::latest()->take(4)->get();
+        return response()->json(['verses' => $verses]);
     }
 }
 
